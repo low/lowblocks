@@ -3,10 +3,22 @@ namespace Craft;
 
 class LowBlocksVariable
 {
+
+	protected $criteria;
+
+	public function __construct()
+	{
+		$this->criteria = craft()->elements->getCriteria(ElementType::MatrixBlock);
+	}
+	
     public function id($id)
     {
-        $criteria = craft()->elements->getCriteria(ElementType::MatrixBlock);
-        $criteria->id = $id;
-        return $criteria->first();
+        $this->criteria->id = $id;
+        return $this->criteria->first();
+    }
+
+    public function blocks()
+    {
+        return $this->criteria;
     }
 }
