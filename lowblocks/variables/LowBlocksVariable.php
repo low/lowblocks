@@ -20,4 +20,9 @@ class LowBlocksVariable
 	{
 		return $this->criteria;
 	}
+
+	public function blocksParams($params)
+	{
+		return craft()->elements->getCriteria(ElementType::MatrixBlock, $params);
+	}
 }
